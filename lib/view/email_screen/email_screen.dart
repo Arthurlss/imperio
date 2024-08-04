@@ -16,31 +16,25 @@ class _EmailScreenState extends State<EmailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: whiteColor,
+        leading: InkWell(
+          onTap: () {
+            Utils.popPage(context);
+          },
+          child: Icon(
+            Icons.arrow_back,
+            color: blackColor,
+          ),
+        ),
+      ),
       body: Container(
-        padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
         child: Form(
           key: _formKey,
           child: Column(
             children: [
-              SizedBox(
-                height: 20,
-              ),
-              Row(
-                children: [
-                  InkWell(
-                    onTap: () {
-                      Utils.popPage(context);
-                    },
-                    child: Icon(
-                      Icons.arrow_back,
-                      color: blackColor,
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 20,
-              ),
               Container(
                 width: getSizeWidth(0.9, context),
                 padding: EdgeInsets.symmetric(vertical: 10),
@@ -56,25 +50,30 @@ class _EmailScreenState extends State<EmailScreen> {
               SizedBox(
                 height: 20,
               ),
-              InkWell(
-                onTap: () {
-                  if (_formKey.currentState.validate()) {
-                    //Utils.goToPage(context: context, page: page)
-                  }
-                },
-                child: Container(
-                  width: 400,
-                  height: 70,
-                  child: Center(
-                    child: Text(
-                      "Continuar",
-                      style: TextStyle(fontWeight: FontWeight.bold),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  InkWell(
+                    onTap: () {
+                      if (_formKey.currentState.validate()) {
+                        //Utils.goToPage(context: context, page: page)
+                      }
+                    },
+                    child: Container(
+                      width: getSizeWidth(0.75, context),
+                      height: 70,
+                      child: Center(
+                        child: Text(
+                          "Continuar",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: yellowColor),
                     ),
                   ),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: yellowColor),
-                ),
+                ],
               ),
             ],
           ),
