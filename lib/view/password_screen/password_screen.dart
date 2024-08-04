@@ -1,19 +1,19 @@
-import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:imperio/constants/constants.dart';
 import 'package:imperio/utils/utils.dart';
-import 'package:imperio/view/password_screen/password_screen.dart';
+import 'package:imperio/view/home_screen/home_screen.dart';
 
-class EmailScreen extends StatefulWidget {
-  const EmailScreen({Key key}) : super(key: key);
+class PasswordScreen extends StatefulWidget {
+  const PasswordScreen({Key key}) : super(key: key);
 
   @override
-  State<EmailScreen> createState() => _EmailScreenState();
+  State<PasswordScreen> createState() => _PasswordScreenState();
 }
 
-class _EmailScreenState extends State<EmailScreen> {
+class _PasswordScreenState extends State<PasswordScreen> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  bool isPasswordVisible = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,14 +40,14 @@ class _EmailScreenState extends State<EmailScreen> {
                 width: getSizeWidth(0.9, context),
                 padding: EdgeInsets.symmetric(vertical: 10),
                 child: Text(
-                  "Qual o seu e-mail?",
+                  "Qual sua senha?",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                 ),
               ),
               SizedBox(
                 height: 20,
               ),
-              getEmailField(),
+              getPasswordField(),
               SizedBox(
                 height: 20,
               ),
@@ -57,8 +57,7 @@ class _EmailScreenState extends State<EmailScreen> {
                   InkWell(
                     onTap: () {
                       if (_formKey.currentState.validate()) {
-                        Utils.goToPage(
-                            context: context, page: PasswordScreen());
+                        Utils.goToPage(context: context, page: HomeScreen());
                       }
                     },
                     child: Container(
@@ -84,7 +83,7 @@ class _EmailScreenState extends State<EmailScreen> {
     );
   }
 
-  getEmailField() {
+  getPasswordField() {
     return Column(
       children: [
         Container(
@@ -99,20 +98,25 @@ class _EmailScreenState extends State<EmailScreen> {
                 return "Campo Obrigatório";
               }
 
-              var newEmailAux = value.replaceAll(" ", "");
-              var _checkEmail = EmailValidator.validate(newEmailAux);
-              if (_checkEmail == false) {
-                return "E-mail inválido";
-              } else {
-                setState(() {
-                  _emailController.text = newEmailAux;
-                });
-              }
               return null;
             },
-            controller: _emailController,
+            obscureText: isPasswordVisible,
+            controller: _passwordController,
             style: TextStyle(fontWeight: FontWeight.bold),
             decoration: InputDecoration(
+                suffixIcon: InkWell(
+                  onTap: () {
+                    setState(() {
+                      isPasswordVisible = !isPasswordVisible;
+                    });
+                  },
+                  child: Icon(
+                    isPasswordVisible
+                        ? Icons.visibility_off_outlined
+                        : Icons.visibility_outlined,
+                    color: blackColor,
+                  ),
+                ),
                 focusedBorder: UnderlineInputBorder(
                     borderSide: BorderSide(
                   color: Colors.transparent,
@@ -121,7 +125,7 @@ class _EmailScreenState extends State<EmailScreen> {
                     borderSide: BorderSide(
                   color: Colors.transparent,
                 )),
-                hintText: 'E-mail'),
+                hintText: 'Senha'),
           ),
         ),
         SizedBox(
