@@ -5,6 +5,8 @@ import 'package:imperio/controller/bets_controller.dart';
 import 'package:imperio/controller/matches_controller.dart';
 import 'package:imperio/controller/sports_controller.dart';
 import 'package:imperio/provider/sports_provider.dart';
+import 'package:imperio/utils/utils.dart';
+import 'package:imperio/view/menu_screen/menu_screen.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -962,15 +964,20 @@ class _HomeScreenState extends State<HomeScreen> {
           SizedBox(
             width: 10,
           ),
-          Container(
-            height: 50,
-            width: 50,
-            child: Icon(
-              Icons.menu,
-              color: whiteColor,
+          InkWell(
+            onTap: () {
+              Utils.goToPage(context: context, page: MenuScreen());
+            },
+            child: Container(
+              height: 50,
+              width: 50,
+              child: Icon(
+                Icons.menu,
+                color: whiteColor,
+              ),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(70), color: blackColor),
             ),
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(70), color: blackColor),
           ),
           Container(
             height: 50,
