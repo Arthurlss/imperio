@@ -1,32 +1,31 @@
 import 'package:dio/dio.dart';
+import 'package:imperio/constants/constants.dart';
+import 'package:imperio/model/championship_model.dart';
+import 'package:imperio/model/sport_model.dart';
 
 class SportsController {
   Future<dynamic> getSports(context) async {
+    var _sportsProvider = getSportsProvider(context);
     try {
-      var response =
-          await Dio().get("https://6569cc7dde53105b0dd7af5c.mockapi.io/sports");
-      print('object');
+      var response = await Dio().get(BASE_URL + "/sports");
+      _sportsProvider.resetListSports();
+      for (var item in response.data) {
+        _sportsProvider.addItemListSports(SportModel.fromJson(item));
+      }
     } catch (e) {
       print(e.toString());
     }
   }
 
   Future<dynamic> getChampionships(context) async {
+    var _sportsProvider = getSportsProvider(context);
     try {
-      var sports =
-          await Dio().get("https://6569cc7dde53105b0dd7af5c.mockapi.io/sports");
-      var championships = await Dio()
-          .get("https://6569cc7dde53105b0dd7af5c.mockapi.io/championships");
-      var matches = await Dio()
-          .get("https://6569cc7dde53105b0dd7af5c.mockapi.io/matches");
-      var bonus =
-          await Dio().get("https://6569cc7dde53105b0dd7af5c.mockapi.io/bonus");
-      var won_bets = await Dio()
-          .get("https://6569cc7dde53105b0dd7af5c.mockapi.io/won_bets");
-      var tips =
-          await Dio().get("https://6569cc7dde53105b0dd7af5c.mockapi.io/tips");
-      /*  var response5 = await Dio()
-          .get("https://6569cc7dde53105b0dd7af5c.mockapi.io/championships"); */
+      var response = await Dio().get(BASE_URL + "/championships");
+      _sportsProvider.resetListChampionship();
+      for (var item in response.data) {
+        _sportsProvider
+            .addItemListChampionship(ChampionshipModel.fromJson(item));
+      }
       print('object');
     } catch (e) {
       print(e.toString());
