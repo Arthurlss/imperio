@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:imperio/provider/auth_provider.dart';
+import 'package:imperio/provider/sports_provider.dart';
 import 'package:imperio/view/login_screen/login_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (_) => AuthProvider()),
+      ChangeNotifierProvider(create: (_) => SportsProvider()),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {

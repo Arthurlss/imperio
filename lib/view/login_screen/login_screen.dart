@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:imperio/constants/constants.dart';
+import 'package:imperio/controller/auth_controller.dart';
 import 'package:imperio/utils/utils.dart';
 import 'package:imperio/view/email_screen/email_screen.dart';
 
@@ -11,6 +12,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  AuthController _authController = AuthController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -52,57 +54,69 @@ class _LoginScreenState extends State<LoginScreen> {
               SizedBox(
                 height: 40,
               ),
-              Container(
-                width: 400,
-                height: 70,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      height: 45,
-                      width: 45,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image:
-                                  AssetImage('assets/images/icon-google.png'))),
-                    ),
-                    Text(
-                      "Entrar com Google",
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                    ),
-                    Container()
-                  ],
+              InkWell(
+                onTap: () async {
+                  await _authController.login(context);
+                },
+                child: Container(
+                  width: 400,
+                  height: 70,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        height: 45,
+                        width: 45,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/icon-google.png'))),
+                      ),
+                      Text(
+                        "Entrar com Google",
+                        style: TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      Container()
+                    ],
+                  ),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: greyColor),
                 ),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30), color: greyColor),
               ),
               SizedBox(
                 height: 20,
               ),
-              Container(
-                width: 400,
-                height: 70,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    Container(
-                      height: 45,
-                      width: 45,
-                      decoration: BoxDecoration(
-                          image: DecorationImage(
-                              image:
-                                  AssetImage('assets/images/icon-apple.png'))),
-                    ),
-                    Text(
-                      "Entrar com Apple",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: whiteColor),
-                    ),
-                    Container()
-                  ],
+              InkWell(
+                onTap: () async {
+                  await _authController.login(context);
+                },
+                child: Container(
+                  width: 400,
+                  height: 70,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        height: 45,
+                        width: 45,
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/icon-apple.png'))),
+                      ),
+                      Text(
+                        "Entrar com Apple",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: whiteColor),
+                      ),
+                      Container()
+                    ],
+                  ),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: blackColor),
                 ),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30), color: blackColor),
               ),
               SizedBox(
                 height: 50,
