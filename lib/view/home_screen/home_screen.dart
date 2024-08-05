@@ -27,6 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
   loadData() async {
     await _betsController.getTips(context);
     await _betsController.getWonBets(context);
+    await _sportsController.getSports(context);
+    await _sportsController.getChampionships(context);
+    await _matchesController.getMatches(context);
+
     setState(() {
       listSports.add('assets/images/all-sports.png');
       listSports.add('assets/images/soccer-sports.png');
@@ -54,10 +58,12 @@ class _HomeScreenState extends State<HomeScreen> {
           vertical: 40,
         ),
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [lightYellowColor, whiteColor],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter)),
+            gradient: LinearGradient(colors: [
+          lightYellowColor,
+          whiteColor,
+          whiteColor,
+          whiteColor,
+        ], begin: Alignment.topCenter, end: Alignment.bottomCenter)),
         child: Consumer<SportsProvider>(
           builder: (context, _sportsProvider, child) {
             return SingleChildScrollView(
@@ -286,72 +292,29 @@ class _HomeScreenState extends State<HomeScreen> {
                     scrollDirection: Axis.horizontal,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 120,
-                          width: 120,
-                          padding: EdgeInsets.all(20),
-                          child: Image.asset(
-                            'assets/images/europa-league-image.png',
-                            fit: BoxFit.cover,
-                          ),
-                          decoration: BoxDecoration(
-                            color: HexColor('#f3f0d8'),
-                            borderRadius: BorderRadius.circular(40),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          height: 120,
-                          width: 120,
-                          padding: EdgeInsets.all(20),
-                          child: Image.asset(
-                            'assets/images/laliga-image.png',
-                            fit: BoxFit.cover,
-                          ),
-                          decoration: BoxDecoration(
-                            color: HexColor('#f3f0d8'),
-                            borderRadius: BorderRadius.circular(40),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          height: 120,
-                          width: 120,
-                          padding: EdgeInsets.all(20),
-                          child: Image.asset(
-                            'assets/images/seriaa-image.png',
-                            fit: BoxFit.cover,
-                          ),
-                          decoration: BoxDecoration(
-                            color: HexColor('#f3f0d8'),
-                            borderRadius: BorderRadius.circular(40),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Container(
-                          height: 120,
-                          width: 120,
-                          padding: EdgeInsets.all(20),
-                          child: Image.asset(
-                            'assets/images/champions-image.png',
-                            fit: BoxFit.cover,
-                          ),
-                          decoration: BoxDecoration(
-                            color: HexColor('#f3f0d8'),
-                            borderRadius: BorderRadius.circular(40),
-                          ),
-                        ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                      ],
+                      children:
+                          _sportsProvider.listChampionship.map<Widget>((e) {
+                        return Row(
+                          children: [
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Container(
+                              height: 120,
+                              width: 120,
+                              padding: EdgeInsets.all(20),
+                              child: Image.network(
+                                e.image,
+                                fit: BoxFit.cover,
+                              ),
+                              decoration: BoxDecoration(
+                                color: HexColor('#f3f0d8'),
+                                borderRadius: BorderRadius.circular(40),
+                              ),
+                            ),
+                          ],
+                        );
+                      }).toList(),
                     ),
                   ),
                   SizedBox(
@@ -471,10 +434,193 @@ class _HomeScreenState extends State<HomeScreen> {
                   Container(
                     width: getSizeWidth(0.8, context),
                     height: getSizeHeight(0.5, context),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 40,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              children: [
+                                Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: NetworkImage(_sportsProvider
+                                              .listMatches[0].team_a_image))),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(_sportsProvider.listMatches[0].team_a)
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Text("Ao vivo"),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Container(
+                                  height: 40,
+                                  width: 70,
+                                  child: Center(child: Text("60'")),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      border: Border.all(
+                                          width: 1, color: Colors.grey[600])),
+                                )
+                              ],
+                            ),
+                            Column(
+                              children: [
+                                Container(
+                                  height: 50,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: NetworkImage(_sportsProvider
+                                              .listMatches[0].team_b_image))),
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                Text(_sportsProvider.listMatches[0].team_b)
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          "2 : 2",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 70),
+                        ),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Container(
+                            width: getSizeWidth(0.7, context),
+                            height: 50,
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                  image: AssetImage(
+                                      'assets/images/match-line.jpg'),
+                                  fit: BoxFit.cover),
+                            )),
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Column(
+                              children: [
+                                Text(
+                                  "Casa",
+                                  style: TextStyle(color: Colors.grey[600]),
+                                ),
+                                Container(
+                                  height: 70,
+                                  width: 70,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/images/xbet-icon.jpg'))),
+                                ),
+                                Text(
+                                  _sportsProvider.listMatches[0].xbet_odds_avg
+                                      .toString(),
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            ),
+                            Container(
+                              height: 50,
+                              width: 1,
+                              decoration: BoxDecoration(color: Colors.grey),
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  "x",
+                                  style: TextStyle(color: Colors.grey[600]),
+                                ),
+                                Container(
+                                  height: 70,
+                                  width: 70,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/images/betsafe-icon.jpg'))),
+                                ),
+                                Text(
+                                  _sportsProvider
+                                      .listMatches[0].betsafe_odds_avg
+                                      .toString(),
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            ),
+                            Container(
+                              height: 50,
+                              width: 1,
+                              decoration: BoxDecoration(color: Colors.grey),
+                            ),
+                            Column(
+                              children: [
+                                Text(
+                                  "Fora",
+                                  style: TextStyle(color: Colors.grey[600]),
+                                ),
+                                Container(
+                                  height: 70,
+                                  width: 70,
+                                  decoration: BoxDecoration(
+                                      image: DecorationImage(
+                                          image: AssetImage(
+                                              'assets/images/betsson-icon.jpg'))),
+                                ),
+                                Text(
+                                  _sportsProvider
+                                      .listMatches[0].betsson_odds_avg
+                                      .toString(),
+                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 40,
+                        ),
+                        Container(
+                          width: getSizeWidth(0.7, context),
+                          child: Divider(),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            InkWell(
+                              onTap: () {},
+                              child: Text(
+                                "Ver mais",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.grey[600],
+                                    fontSize: 20),
+                              ),
+                            )
+                          ],
+                        )
+                      ],
+                    ),
                     decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image: AssetImage('assets/images/card-match.jpg'),
-                            fit: BoxFit.fitWidth),
                         borderRadius: BorderRadius.circular(50),
                         color: whiteColor,
                         boxShadow: [
@@ -940,6 +1086,22 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       }).toList(),
                     ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        height: 50,
+                        width: getSizeWidth(0.4, context),
+                        decoration: BoxDecoration(
+                            image: DecorationImage(
+                                image: AssetImage(
+                                    'assets/images/imperio-name.png'))),
+                      )
+                    ],
                   ),
                   SizedBox(
                     height: 100,

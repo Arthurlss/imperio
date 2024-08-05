@@ -1,10 +1,16 @@
 import 'package:dio/dio.dart';
 import 'package:imperio/constants/constants.dart';
+import 'package:imperio/model/match_model.dart';
 
 class MatchesController {
   Future<dynamic> getMatches(context) async {
+    var _sportsProvider = getSportsProvider(context);
     try {
       var response = await Dio().get(BASE_URL + "/matches");
+      _sportsProvider.resetListMatches();
+      for (var item in response.data) {
+        _sportsProvider.addItemListMatches(MatchModel.fromJson(item));
+      }
     } catch (e) {
       print(e.toString());
     }

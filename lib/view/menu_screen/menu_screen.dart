@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imperio/constants/constants.dart';
 import 'package:imperio/utils/utils.dart';
+import 'package:imperio/view/sports_screen/sports_screen.dart';
 
 class MenuScreen extends StatefulWidget {
   const MenuScreen({Key key}) : super(key: key);
@@ -107,27 +108,32 @@ class _MenuScreenState extends State<MenuScreen> {
               SizedBox(
                 height: 30,
               ),
-              Row(
-                children: [
-                  Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(
-                        image: DecorationImage(
-                            image:
-                                AssetImage('assets/images/icon-sports.png'))),
-                  ),
-                  SizedBox(
-                    width: 30,
-                  ),
-                  Text(
-                    "Esportes",
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey[800],
-                        fontSize: 25),
-                  )
-                ],
+              InkWell(
+                onTap: () {
+                  Utils.goToPage(context: context, page: SportsScreen());
+                },
+                child: Row(
+                  children: [
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                          image: DecorationImage(
+                              image:
+                                  AssetImage('assets/images/icon-sports.png'))),
+                    ),
+                    SizedBox(
+                      width: 30,
+                    ),
+                    Text(
+                      "Esportes",
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.grey[800],
+                          fontSize: 25),
+                    )
+                  ],
+                ),
               ),
               SizedBox(
                 height: 30,
