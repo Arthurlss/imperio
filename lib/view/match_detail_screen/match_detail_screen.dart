@@ -50,7 +50,7 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                         LastMatches(
                           match: widget.match,
                         ),
-                        OddsPanel()
+                        OddsPanel(match: widget.match)
                       ],
                     ),
                   )

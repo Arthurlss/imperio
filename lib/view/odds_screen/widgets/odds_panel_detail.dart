@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:imperio/constants/constants.dart';
+import 'package:hexcolor/hexcolor.dart';
 import 'package:imperio/provider/sports_provider.dart';
-import 'package:imperio/utils/utils.dart';
-import 'package:imperio/view/odds_screen/odds_screen.dart';
 import 'package:provider/provider.dart';
 
-class OddsPanel extends StatelessWidget {
-  final match;
-  const OddsPanel({Key key, this.match}) : super(key: key);
+class OddsPanelDetail extends StatelessWidget {
+  const OddsPanelDetail({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -24,46 +21,6 @@ class OddsPanel extends StatelessWidget {
                     height: 10,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Container(
-                        height: 50,
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: blackColor),
-                        child: Center(
-                          child: Text(
-                            "Odds mais altas",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, color: whiteColor),
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        width: 20,
-                      ),
-                      Container(
-                        height: 50,
-                        padding: EdgeInsets.symmetric(horizontal: 10),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            border: Border.all(width: 1, color: blackColor)),
-                        child: Center(
-                          child: Text(
-                            "Outras odds",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Column(
@@ -78,7 +35,7 @@ class OddsPanel extends StatelessWidget {
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/xbet-icon.jpg'))),
+                                        'assets/images/xbet-icon.png'))),
                           ),
                           Text(
                             _sportsProvider.listMatches[0].xbet_odds_avg
@@ -104,7 +61,7 @@ class OddsPanel extends StatelessWidget {
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/betsafe-icon.jpg'))),
+                                        'assets/images/betsafe-icon.png'))),
                           ),
                           Text(
                             _sportsProvider.listMatches[0].betsafe_odds_avg
@@ -130,7 +87,7 @@ class OddsPanel extends StatelessWidget {
                             decoration: BoxDecoration(
                                 image: DecorationImage(
                                     image: AssetImage(
-                                        'assets/images/betsson-icon.jpg'))),
+                                        'assets/images/icon-betsson.png'))),
                           ),
                           Text(
                             _sportsProvider.listMatches[0].betsson_odds_avg
@@ -141,30 +98,11 @@ class OddsPanel extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Divider(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        onTap: () {
-                          Utils.goToPage(
-                              context: context,
-                              page: OddsScreen(
-                                match: match,
-                              ));
-                        },
-                        child: Text(
-                          "Ver mais",
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      )
-                    ],
-                  )
                 ],
               ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(50),
-                color: yellowColor,
+                color: HexColor('#c0c4c2'),
               ),
             ),
           ],
