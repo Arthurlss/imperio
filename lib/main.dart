@@ -1,4 +1,3 @@
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:imperio/provider/auth_provider.dart';
 import 'package:imperio/provider/sports_provider.dart';
@@ -11,8 +10,7 @@ void main() {
       ChangeNotifierProvider(create: (_) => AuthProvider()),
       ChangeNotifierProvider(create: (_) => SportsProvider()),
     ],
-    //child: MyApp(),
-    child: DevicePreview(builder: (_) => MyApp()),
+    child: MyApp(),
   ));
 }
 
@@ -25,8 +23,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      locale: DevicePreview.locale(context),
-      builder: DevicePreview.appBuilder,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
