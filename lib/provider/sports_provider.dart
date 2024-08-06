@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 
+//Provider responsável por gerenciar os dados relacionados a esporte
 class SportsProvider with ChangeNotifier {
   List _listTips = [];
   List _listWonBets = [];

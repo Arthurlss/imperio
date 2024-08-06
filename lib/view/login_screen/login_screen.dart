@@ -6,6 +6,7 @@ import 'package:imperio/view/login_screen/widgets/email_button.dart';
 import 'package:imperio/view/login_screen/widgets/google_button.dart';
 import 'package:imperio/view/login_screen/widgets/phone_button.dart';
 
+//Página de estruturação dos componentes da tela de login
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key key}) : super(key: key);
 
@@ -22,8 +23,11 @@ class _LoginScreenState extends State<LoginScreen> {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              //Componente da imagem da tela de login
               BannerLogin(),
+              //Botão de acesso via google
               GoogleButton(),
+              //Botão de acesso via apple
               AppleButton(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -49,10 +53,12 @@ class _LoginScreenState extends State<LoginScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  //Botão para cadastro de email
                   EmailButton(),
                   SizedBox(
                     width: 30,
                   ),
+                  //Botão para acesso com telefone
                   PhoneButton()
                 ],
               )

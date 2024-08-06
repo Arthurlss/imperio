@@ -201,29 +201,31 @@ class CardMatchDetail extends StatelessWidget {
             ),
             Container(
               width: double.infinity,
-              height: 150,
+              height: getSizeHeight(0.15, context),
               child: Stack(
                 children: [
                   Positioned(
-                    bottom: 85,
-                    left: 40,
+                    bottom: getSizeHeight(0.09, context),
+                    left: getSizeWidth(0.1, context),
                     child: Container(
-                      height: 40,
-                      width: 40,
+                      height: getSizeWidth(0.08, context),
+                      width: getSizeWidth(0.08, context),
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: NetworkImage(match.team_a_image))),
+                              image: NetworkImage(match.team_a_image),
+                              fit: BoxFit.cover)),
                     ),
                   ),
                   Positioned(
-                    bottom: 85,
-                    right: 45,
+                    bottom: getSizeHeight(0.09, context),
+                    right: getSizeWidth(0.11, context),
                     child: Container(
-                      height: 40,
-                      width: 40,
+                      height: getSizeWidth(0.08, context),
+                      width: getSizeWidth(0.08, context),
                       decoration: BoxDecoration(
                           image: DecorationImage(
-                              image: NetworkImage(match.team_a_image))),
+                              image: NetworkImage(match.team_b_image),
+                              fit: BoxFit.cover)),
                     ),
                   ),
                 ],

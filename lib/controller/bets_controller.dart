@@ -4,6 +4,7 @@ import 'package:imperio/model/tip_model.dart';
 import 'package:imperio/model/won_bet_model.dart';
 
 class BetsController {
+  //Endpoint responsável por buscar as ofertas bonus
   Future<dynamic> getOffersBonus(context) async {
     try {
       var response = await Dio().get(BASE_URL + "/bonus");
@@ -12,6 +13,7 @@ class BetsController {
     }
   }
 
+//Endpoint responsável por buscar as apostas vencidas
   Future<dynamic> getWonBets(context) async {
     var _sportsProvider = getSportsProvider(context);
     try {
@@ -25,6 +27,7 @@ class BetsController {
     }
   }
 
+//Endpoint responsável por buscar as dicas de apostas
   Future<dynamic> getTips(context) async {
     var _sportsProvider = getSportsProvider(context);
 

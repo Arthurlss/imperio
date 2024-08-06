@@ -78,7 +78,10 @@ class CardsBetDetail extends StatelessWidget {
                         ],
                       ),
                     )),
-                    Text("3.10")
+                    Text(
+                      "3.10",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )
                   ],
                 ),
                 SizedBox(
@@ -99,7 +102,10 @@ class CardsBetDetail extends StatelessWidget {
                         ],
                       ),
                     )),
-                    Text("3.10")
+                    Text(
+                      "3.10",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )
                   ],
                 ),
                 SizedBox(
@@ -180,7 +186,10 @@ class CardsBetDetail extends StatelessWidget {
                         ],
                       ),
                     )),
-                    Text("3.10")
+                    Text(
+                      "3.10",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )
                   ],
                 ),
                 SizedBox(
@@ -201,7 +210,10 @@ class CardsBetDetail extends StatelessWidget {
                         ],
                       ),
                     )),
-                    Text("3.10")
+                    Text(
+                      "3.10",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )
                   ],
                 ),
                 SizedBox(
@@ -282,7 +294,10 @@ class CardsBetDetail extends StatelessWidget {
                         ],
                       ),
                     )),
-                    Text("3.10")
+                    Text(
+                      "3.10",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )
                   ],
                 ),
                 SizedBox(
@@ -303,7 +318,10 @@ class CardsBetDetail extends StatelessWidget {
                         ],
                       ),
                     )),
-                    Text("3.10")
+                    Text(
+                      "3.10",
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    )
                   ],
                 ),
                 SizedBox(

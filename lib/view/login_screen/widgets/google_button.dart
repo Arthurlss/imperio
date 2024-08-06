@@ -5,6 +5,7 @@ import 'package:imperio/provider/sports_provider.dart';
 import 'package:imperio/utils/utils.dart';
 import 'package:provider/provider.dart';
 
+//Botão de acesso via google
 class GoogleButton extends StatefulWidget {
   const GoogleButton({Key key}) : super(key: key);
 

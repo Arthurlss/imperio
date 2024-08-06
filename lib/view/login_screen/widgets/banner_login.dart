@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imperio/constants/constants.dart';
 
+//Banner da tela de login
 class BannerLogin extends StatelessWidget {
   const BannerLogin({Key key}) : super(key: key);
 

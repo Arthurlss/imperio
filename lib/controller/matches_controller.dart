@@ -7,6 +7,7 @@ import 'package:imperio/model/match_model.dart';
 import 'package:imperio/model/odd_match_model.dart';
 
 class MatchesController {
+  //Endpoint responsável por buscar os jogos
   Future<dynamic> getMatches(context) async {
     var _sportsProvider = getSportsProvider(context);
     try {
@@ -20,6 +21,7 @@ class MatchesController {
     }
   }
 
+//Endpoint responsável por buscar as apostas do jogo especifico
   Future<dynamic> getBetsFromMatch(context, id) async {
     var _sportsProvider = getSportsProvider(context);
     try {
@@ -33,6 +35,7 @@ class MatchesController {
     }
   }
 
+//Endpoint responsável por buscar as odds do jogo especifico
   Future<dynamic> getOddsFromMatch(context, id) async {
     var _sportsProvider = getSportsProvider(context);
     try {
@@ -46,6 +49,7 @@ class MatchesController {
     }
   }
 
+//Endpoint responsável por buscar os ultimos jogos
   Future<dynamic> getLastMatches(context, id) async {
     var _sportsProvider = getSportsProvider(context);
     try {
@@ -59,6 +63,7 @@ class MatchesController {
     }
   }
 
+//Endpoint responsável por buscar os detalhes do jogo
   Future<dynamic> getMatchDetail(context, id) async {
     var _sportsProvider = getSportsProvider(context);
     try {

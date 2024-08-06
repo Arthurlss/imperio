@@ -4,6 +4,7 @@ import 'package:imperio/model/championship_model.dart';
 import 'package:imperio/model/sport_model.dart';
 
 class SportsController {
+  //Endpoint responsável por buscar todos os esportes
   Future<dynamic> getSports(context) async {
     var _sportsProvider = getSportsProvider(context);
     try {
@@ -17,6 +18,7 @@ class SportsController {
     }
   }
 
+//Endpoint responsável por buscar os campeonatos
   Future<dynamic> getChampionships(context) async {
     var _sportsProvider = getSportsProvider(context);
     try {
