@@ -1,7 +1,7 @@
 class TipModel {
-  String image;
-  String title;
-  String description;
+  dynamic image;
+  dynamic title;
+  dynamic description;
 
   TipModel({this.description, this.image, this.title});
 

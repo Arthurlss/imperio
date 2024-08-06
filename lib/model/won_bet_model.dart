@@ -1,7 +1,7 @@
 class WonBetModel {
-  String user_avatar;
-  String user;
-  String platform;
+  dynamic user_avatar;
+  dynamic user;
+  dynamic platform;
   dynamic score;
 
   WonBetModel({this.platform, this.score, this.user, this.user_avatar});

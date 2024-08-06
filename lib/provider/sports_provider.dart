@@ -6,12 +6,67 @@ class SportsProvider with ChangeNotifier {
   List _listSports = [];
   List _listChampionship = [];
   List _listMatches = [];
+  List _listBetsFromMatch = [];
+  List _listOdds = [];
+  List _listLastMatches = [];
+  dynamic _loading = false;
+  dynamic _matchDetail;
 
   get listTips => _listTips;
   get listWonBets => _listWonBets;
   get listSports => _listSports;
   get listChampionship => _listChampionship;
   get listMatches => _listMatches;
+  get listBetsFromMatch => _listBetsFromMatch;
+  get listOdds => _listOdds;
+  get matchDetail => _matchDetail;
+  get listLastMatches => _listLastMatches;
+  get loading => _loading;
+
+  void setLoading(item) {
+    _loading = item;
+    notifyListeners();
+  }
+
+  void setMatchDetail(item) {
+    _matchDetail = item;
+    notifyListeners();
+  }
+
+  void resetMatchDetail() {
+    _matchDetail = null;
+    notifyListeners();
+  }
+
+  void addItemListLastMatch(item) {
+    _listLastMatches.add(item);
+    notifyListeners();
+  }
+
+  void resetListLastMatch() {
+    _listLastMatches = [];
+    notifyListeners();
+  }
+
+  void addItemListOdds(item) {
+    _listOdds.add(item);
+    notifyListeners();
+  }
+
+  void resetListOdds() {
+    _listOdds = [];
+    notifyListeners();
+  }
+
+  void addItemListBestFromMatch(item) {
+    _listBetsFromMatch.add(item);
+    notifyListeners();
+  }
+
+  void resetListBetsFromMatch() {
+    _listBetsFromMatch = [];
+    notifyListeners();
+  }
 
   void addItemListMatches(item) {
     _listMatches.add(item);

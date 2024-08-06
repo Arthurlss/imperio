@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:imperio/constants/constants.dart';
+import 'package:imperio/controller/auth_controller.dart';
 import 'package:imperio/utils/utils.dart';
-import 'package:imperio/view/home_screen/home_screen.dart';
 
 class PasswordScreen extends StatefulWidget {
   const PasswordScreen({Key key}) : super(key: key);
@@ -13,6 +13,7 @@ class PasswordScreen extends StatefulWidget {
 class _PasswordScreenState extends State<PasswordScreen> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   TextEditingController _passwordController = TextEditingController();
+  AuthController _authController = AuthController();
   bool isPasswordVisible = true;
   @override
   Widget build(BuildContext context) {
@@ -55,9 +56,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   InkWell(
-                    onTap: () {
+                    onTap: () async {
                       if (_formKey.currentState.validate()) {
-                        Utils.goToPage(context: context, page: HomeScreen());
+                        getSportsProvider(context).setLoading(true);
+                        await _authController.login(context);
+                        getSportsProvider(context).setLoading(false);
                       }
                     },
                     child: Container(
