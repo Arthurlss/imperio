@@ -1,6 +1,6 @@
 class ChampionshipModel {
-  String name;
-  String image;
+  dynamic name;
+  dynamic image;
 
   ChampionshipModel({this.name, this.image});
 

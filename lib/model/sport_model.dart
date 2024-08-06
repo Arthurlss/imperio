@@ -1,6 +1,6 @@
 class SportModel {
-  String name;
-  String image;
+  dynamic name;
+  dynamic image;
 
   SportModel({this.image, this.name});
 
