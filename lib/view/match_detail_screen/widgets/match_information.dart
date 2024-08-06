@@ -13,6 +13,9 @@ class MatchInformation extends StatelessWidget {
       builder: (context, _sportsProvider, child) {
         return Column(
           children: [
+            SizedBox(
+              height: 20,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

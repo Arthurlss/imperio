@@ -3,11 +3,18 @@ import 'package:imperio/constants/constants.dart';
 
 class MenuOptions extends StatelessWidget {
   MenuOptions({Key key}) : super(key: key);
-  List listSports = [
-    'assets/images/all-sports.png',
+  /* List listSports = [
+    {'image':'assets/images/all-sports.png','name':'Todos'},
     'assets/images/soccer-sports.png',
     'assets/images/basketball-sports.png',
     'assets/images/esports-sports.png'
+  ]; */
+
+  List listSports = [
+    {'image': 'assets/images/all-sports.png', 'name': 'Todos'},
+    {'image': 'assets/images/soccer-sports.png', 'name': 'Futebol'},
+    {'image': 'assets/images/basketball-sports.png', 'name': 'Basquete'},
+    {'image': 'assets/images/esports-sports.png', 'name': 'E-Sports'},
   ];
 
   @override
@@ -23,7 +30,11 @@ class MenuOptions extends StatelessWidget {
                   Container(
                     padding: EdgeInsets.symmetric(horizontal: 10),
                     height: getSizeHeight(0.045, context),
-                    child: Image.asset(e, fit: BoxFit.cover),
+                    child: Image.asset(e['image'], fit: BoxFit.cover),
+                  ),
+                  Text(
+                    e['name'],
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   SizedBox(
                     width: getSizeWidth(0.02, context),

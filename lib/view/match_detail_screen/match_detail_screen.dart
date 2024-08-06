@@ -12,6 +12,7 @@ import 'package:imperio/view/match_detail_screen/widgets/referee_facts.dart';
 import 'package:imperio/view/match_detail_screen/widgets/team_facts.dart';
 import 'package:provider/provider.dart';
 
+//Detalhes de um jogo específico
 class MatchDetailScreen extends StatefulWidget {
   final match;
   const MatchDetailScreen({Key key, this.match}) : super(key: key);
@@ -30,11 +31,17 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
             child: SingleChildScrollView(
               child: Column(
                 children: [
+                  //Cabeçalho da pagina
                   HeaderMatchDetail(),
+                  //Card com o detalhamento do momento atual do jogo
                   CardMatchDetail(match: widget.match),
+                  //Informações básicas do jogo
                   MatchInformation(),
+                  //Fatos sobre os times
                   TeamFacts(match: widget.match),
+                  //Fatos e informações sobre os árbitros
                   RefereeFacts(),
+                  //Última bets ganhas
                   WonBets(),
                   SizedBox(
                     height: 20,
@@ -46,10 +53,13 @@ class _MatchDetailScreenState extends State<MatchDetailScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        //Resumo dos últimos jogos
                         LastMatchesResume(match: widget.match),
+                        //Últimos jogos
                         LastMatches(
                           match: widget.match,
                         ),
+                        //Odds das partias de várias casas de apostas
                         OddsPanel(match: widget.match)
                       ],
                     ),

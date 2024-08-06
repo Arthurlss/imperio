@@ -2,6 +2,7 @@ import 'package:imperio/utils/utils.dart';
 import 'package:imperio/view/home_screen/home_screen.dart';
 
 class AuthController {
+  //Endpoint responsável por fazer login
   Future<dynamic> login(context) async {
     try {
       // var response = await Dio().post(BASE_URL + "/login");

@@ -18,6 +18,7 @@ import 'package:imperio/view/home_screen/widgets/tips_panel.dart';
 import 'package:imperio/view/home_screen/widgets/won_bets.dart';
 import 'package:provider/provider.dart';
 
+//Tela de home do aplicativo
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key key}) : super(key: key);
 
@@ -26,13 +27,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List listSports = [];
-  List listBanners = [];
-
   SportsController _sportsController = SportsController();
   MatchesController _matchesController = MatchesController();
   BetsController _betsController = BetsController();
-
+  //Carregamento dos dados para a tela inicial funcionar corretamente
   loadData() async {
     await _betsController.getTips(context);
     await _betsController.getWonBets(context);
@@ -51,6 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //Navegador
       bottomSheet: NavigatorHome(),
       body: Container(
         padding: EdgeInsets.symmetric(
@@ -73,7 +72,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           _sportsProvider.listSports.length == 0 ||
                           _sportsProvider.listWonBets.length == 0 ||
                           _sportsProvider.listTips.length == 0
-                      ? Container(
+                      ?
+                      //Loading para quando os dados ainda não estiverem carregados
+                      Container(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [Utils.getLoadingWidget(blackColor)],
@@ -81,16 +82,27 @@ class _HomeScreenState extends State<HomeScreen> {
                         )
                       : Column(
                           children: [
+                            //Logo império
                             ImperioLogo(),
+                            //Opções de esportes para clicar
                             MenuOptions(),
+                            //Lista de banners principais
                             BannerListHome(),
+                            //Lista de campeonatos populares
                             PopularChampionships(),
+                            //Painel demonstrando o dia que está sendo exibido
                             DayPanel(),
+                            //Card do jogo atual do dia
                             CardMatch(),
+                            //Botão para ir para todos os jogos
                             AllMatchesButton(),
+                            //Painel com dicas de apostas
                             TipsPanel(),
+                            //Principais bonus de apostas
                             BonusBet(),
+                            //Ultimas apostas ganhas
                             WonBets(),
+                            //Logo império
                             ImperioLogo(),
                             SizedBox(
                               height: 100,
